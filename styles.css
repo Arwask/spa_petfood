@@ -1,0 +1,14 @@
+table, th, td
+{
+	border: 1px solid black;
+	padding: 10px;
+	width: 100%;
+}
+
+.cardDiv
+{
+	padding: 10px;
+	border: 1px solid black;
+	width: 30%;
+	margin: 20px auto;
+}
