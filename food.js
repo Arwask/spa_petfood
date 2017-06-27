@@ -14,9 +14,19 @@ createFoodCard = function(brandList)
 	let cardDiv = document.createElement('div');
 	cardDiv.setAttribute('class', 'cardDiv')
 	mainDiv.appendChild(cardDiv);
-	let h3 = document.createElement('h3');
-	h3.innerHTML = item.name;
-	cardDiv.appendChild(h3);
+	let h2 = document.createElement('h2');
+	h2.innerHTML = item.name;
+	cardDiv.appendChild(h2);
+	if(item.hasOwnProperty('breeds'))
+	{
+		let h3 = document.createElement('h3');
+		cardDiv.appendChild(h3);
+		h3.innerHTML = "Breeds: ";
+		item.breeds.forEach(function(breed)
+		{
+		h3.innerHTML += `${breed}, `;
+		})
+	}
 	let table = document.createElement('table');
 	cardDiv.appendChild(table);
 	let tr1 = document.createElement('tr'); //main header row
@@ -24,13 +34,6 @@ createFoodCard = function(brandList)
 	let th1 = document.createElement('th'); // row - heading
 	th1.innerHTML = "Type";
 	tr1.appendChild(th1);
-	if(brandList.hasOwnProperty('breeds'))
-	{
-		console.log("yes it has");
-		let thx = document.createFoodCard('th');
-		tr1.appendChild(thx);
-		thx.innerHTML = "Breeds";
-	}
 	let th2 = document.createElement('th');
 	th2.innerHTML = "Name";
 	tr1.appendChild(th2);
@@ -71,8 +74,6 @@ loadCatFood = function()
 	let data = JSON.parse(event.target.responseText);
 	catFoodList = data.cat_brands;
 	createFoodCard(catFoodList);
-	console.log("cat", catFoodList)
-
 }
 dogfood.getDatabase = function()
 {
